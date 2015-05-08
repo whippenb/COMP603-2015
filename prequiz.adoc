@@ -21,40 +21,54 @@ git push -u --all origin
 == Questions
 
 What is the difference between a set, a bag, and a sequence?
+a set is a group of something, a bag is something you hold stuff in, and a sequence is a list of things to do in order.
 
 
 What is a language (in terms of sets and sequences)?
+a language is a set of commands, actions, variable, etc. that we can understand at a higher level but when executed by a compiler it is brought down to a sequence of simple actions
 
 
 What is a compiler? Name some.
+Reads the coding language and figures out what simple, machine language actions need to be done and in what order.
+C++ compiler, Javac
 
 
 What is an interpreter? How does that differ from a compiler?
-
+second verse same as the first
 
 What is the derivative of a language?
-
+a mathematical operation performed on a function OR the base functions that together make up a higher level functions
 
 What is a regular expression?
-
+ a smile, a frown, a blank neutral stare, angry face, etc.
 
 What is a finite automaton, and what is the difference between an NFA and a DFA?
-
+an autonomous agent with a limited selection of actions and a finite operation length.
 
 What is a grammar, and what is the difference between regular grammars, context-free grammars, LL(k) and LR(k)?
-
+the things grammar nazis pay attention to. 
 
 What is the difference between derivative parsing, recursive-descent parsing, shift-reduce parsing and parser combinators?
-
+looking at a full function and breaking it into its smaller components, 
+the depth first search of parsing, 
+fully examining pieces of a full function one section at a time,
+the opposite of parsing?
 
 What is a visitor?
+an unknown user in a system
 
 
 What is the difference between a parse tree and an abstract syntax tree?
+a parse tree examines the actual existing functions and the smaller functions they take,
+a tree that doesn't entirely examine the functions but gets the general idea of what each part will do
 
 
 Name some optimizations.
-
+reduce memory usage
+increase run speed
+reduce file size
+improve program stability
 
 What questions do you have for me?
+will you be telling us this because I pretty much guessed everything?  Will we get a hypothetical grade. 
 
