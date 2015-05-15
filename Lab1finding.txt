@@ -1,0 +1,22 @@
+Ben Whippen
+
+1. CPython
+
+2. 
+tokenize: tokenizer.py
+parse: parse folder has multiple files
+AST: Python.asdl
+Optimization: py_compile.py
+code generation: genobject.c
+
+3. The most surprising thing is that nearly the whole thing is written in c
+
+4. cpython seems to be quite large
+some names tell you a lot, some names tell you nothing
+so many things have "Py" in the name
+They have a base level file just for a single file about grammar
+Most of the stuff from part 2 is in the Parser base file
+The whole thing has a lot of contributors
+The programs file has very few actual files, but does have the surprisingly short python.c file.
+python.c seems to be mostly just setup.  
+PCbuild seems to be just a whole bunch of stuff to help python work under the varied pc conditions and with various other PC softwares like sql
