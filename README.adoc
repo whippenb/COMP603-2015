@@ -7,7 +7,7 @@
 Go ahead and pull from me:
 
 ----
-cd COMP603-2015
+cd ~/COMP603-2015
 git pull upstream master
 ----
 
@@ -47,16 +47,32 @@ Peek at the next character and figure out which production (rule) to apply based
 
 NOTE: Your parser *cannot* avoid using recursion or a stack (implicit or explicit). Don't even.
 
-Stuff child nodes into `Program` at the top-level, and inside `Loop`s elsewhere.
+Stuff child nodes into `Program` at the top-level, and inside a `Loop` elsewhere.
 
 You've completed this lab if your program prints the *exact* same program as what your parser read in (including the loop brackets) without modifying `main`.
 In `main`, the program traverses the tree your parser built, using the `Printer` http://en.wikipedia.org/wiki/Visitor_pattern[visitor] to print Brainfuck code.
+Any discrepancy between the program output and input means your parser formed the tree improperly.
 
-NOTE: Any discrepancy between the program output and input means your parser formed the tree improperly, and you're not done.
+----
+cd ~/COMP603-2015
+cd src
+g++ -o brainfuck.exe brainfuck.cpp
+brainfuck.exe helloworld.bf
+chmod +x is-lab2-done.sh
+./is-lab2-done.sh
+----
 
 === Deadline
 
 Please complete before the next lab period. In the next lab, we'll write an interpreter for Brainfuck.
+
+Modify `src/brainfuck.cpp` in place, or replace it with your version.
+
+----
+cd ~/COMP603-2015
+git commit -am "Lab 2 done."
+git push origin master
+----
 
 == May 20: Shift-reduce parsing LR(k) grammars
 
