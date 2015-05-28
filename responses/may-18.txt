@@ -1,6 +1,7 @@
 What does it mean for two sets to be disjoint?
-
+Two sets are disjointed if they have no elements in common
 
 
 What is the union of two sets?
 
+When the elements of sets are added together. Ex A = {1,3,4} and B={2,3,5} AuB={1,2,3,4,5}
