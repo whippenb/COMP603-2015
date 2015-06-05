@@ -105,13 +105,13 @@ public:
 * Read in the file by recursive descent.
 * Modify as necessary and add whatever functions you need to get things done.
 */
-void parse(fstream & file, Container * container, int location) {
+void parse(fstream & file, Container * container) {
 	char c;
 	Loop * loop;
 	while (file >> c){
 		if (c == '['){
 			loop = new Loop();
-			parse(file, loop, location);
+			parse(file, loop);
 			container->children.push_back(loop);
 		}
 		else if (c == ']'){
@@ -155,18 +155,67 @@ public:
 	}
 };
 
+class Interpreter : public Visitor {
+	char memory[30000];
+	int pointer;
+public:
+	void visit(const CommandNode * leaf) {
+		switch (leaf->command) {
+		case INCREMENT:
+			memory[pointer] += 1;
+			break;
+		case DECREMENT:
+			memory[pointer] -= 1;
+			break;
+		case SHIFT_LEFT:
+			if (pointer > 0){ 
+				pointer -= 1;
+			}
+			break;
+		case SHIFT_RIGHT:
+			if (pointer < 3000){
+				pointer += 1;
+			}
+			break;
+		case INPUT:
+			cin >> memory[pointer];
+			break;
+		case OUTPUT:
+			cout << memory[pointer];
+			break;
+		}
+	}
+	void visit(const Loop * loop) {
+		while (memory[pointer]) {
+			for (vector<Node*>::const_iterator it = loop->children.begin(); it != loop->children.end(); ++it) {
+				(*it)->accept(this);
+			}
+		}
+	}
+	void visit(const Program * program) {
+		// zero init the memory array
+		// set pointer to zero
+		memset(memory, 0, 30000);
+		pointer = 0;
+		for (vector<Node*>::const_iterator it = program->children.begin(); it != program->children.end(); ++it) {
+			(*it)->accept(this);
+		}
+	}
+};
+
 int main(int argc, char *argv[]) {
 	fstream file;
 	Program program;
 	Printer printer;
+	Interpreter interpreter;
 	if (argc == 1) {
 		cout << argv[0] << ": No input files." << endl;
 	}
 	else if (argc > 1) {
 		for (int i = 1; i < argc; i++) {
 			file.open(argv[i], fstream::in);
-			parse(file, &program, 0);
-			program.accept(&printer);
+			parse(file, &program);
+			program.accept(&interpreter);
 			file.close();
 		}
 	}
